@@ -1,54 +1,16 @@
-<?php
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Order Report</title>
+</head>
+<body>
 
-namespace App\Observers;
+<h1>Order #{{ $order->id }}</h1>
 
-use Barryvdh\DomPDF\Facade\Pdf;
-use Illuminate\Support\Facades\Storage;
-use App\Models\Order;
+<p>User: {{ $order->user->name }}</p>
+<p>Product: {{ $order->product->name }}</p>
+<p>Quantity: {{ $order->quantity }}</p>
+<p>Status: {{ strtoupper($order->status) }}</p>
 
-class OrderObserver
-{
-    /**
-     * Handle the Order "created" event.
-     */
-    public function created(Order $order)
-{
-}
-
-    /**
-     * Handle the Order "updated" event.
-     */
-    public function updated(Order $order): void
-    {
-       if ($order->status === 'approved') {
-        $pdf = Pdf::loadView('pdf.orders-report', ['order' => $order]);
-
-        $pdf->save(storage_path('app/public/order_'.$order->id.'.pdf'));
-    }
-
-    }
-
-    /**
-     * Handle the Order "deleted" event.
-     */
-    public function deleted(Order $order): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Order "restored" event.
-     */
-    public function restored(Order $order): void
-    {
-        //
-    }
-
-    /**
-     * Handle the Order "force deleted" event.
-     */
-    public function forceDeleted(Order $order): void
-    {
-        //
-    }
-}
+</body>
+</html>
