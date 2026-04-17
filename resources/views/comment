@@ -1,0 +1,5 @@
+sir, about sa mailing and pdf
+naa  koy duha ka pdf which is automatic and
+clickable and automatic makita sa admin order onces ma approved makita nimo
+ang pdf sa storage and isa ka pdf nasa dashboard
+then sa mail same as the approved will send a email thru mailtrap (use php artisan queue:work)
